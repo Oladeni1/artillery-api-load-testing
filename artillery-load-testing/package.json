@@ -1,0 +1,18 @@
+{
+  "name": "artillery-load-testing",
+  "version": "1.0.0",
+  "description": "Artillery Load Testing",
+  "main": "index.js",
+  "scripts": {
+    "runTest": "artillery run test.yml",
+    "runTestWithJsonOutput": "artillery run -o Test_report test.yml",
+    "convertJsonToHtml": "artillery report Test_report",
+    "runTestWithCompleteReport": "runTestWithJsonOutput||convertJsonToHtml"
+  },
+  "author": "Olatunde Oladeni",
+  "license": "ISC",
+  "dependencies": {
+    "artillery-plugin-fuzzer": "^1.0.1",
+    "artillery-plugin-metrics-by-endpoint": "^1.0.2"
+  }
+}

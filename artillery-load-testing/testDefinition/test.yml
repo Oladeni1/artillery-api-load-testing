@@ -1,0 +1,79 @@
+config:
+  target: "https://httpbin.org"
+  phases:
+    - duration: 60
+      arrivalRate: 1
+      name: Warm up
+    - duration: 120
+      arrivalRate: 1
+      rampTo: 2
+      name: Ramp up load
+    - duration: 240
+      arrivalRate: 4
+      name: Sustained load
+  plugins:
+    fuzzer: {}
+    metrics-by-endpoint: {useOnlyRequestNames: true}  
+scenarios:
+  - name: "Search Method API"
+    flow:
+      - get:
+          url: "/#/HTTP_Methods"
+      - think: 5    
+
+  - name: "Search Authentication API"
+    flow:
+      - get:
+          url: "/#/Auth"     
+      - think: 5    
+
+  - name: "Search Status Codes API"
+    flow:
+      - get:
+          url: "/#/Status_codes"      
+      - think: 5    
+
+  - name: "Search Request Inspection API"
+    flow:
+      - get:
+          url: "/#/Request_inspection"        
+      - think: 5   
+
+  - name: "Search Response Inspection API"
+    flow:
+      - get:
+          url: "/#/Response_inspection"      
+      - think: 5  
+
+  - name: "Search Response_formats API"
+    flow:
+      - get:
+          url: "/#/Response_formats"      
+      - think: 5 
+
+  - name: "Search Dynamic_data API"
+    flow:
+      - get:
+          url: "/#/Dynamic_data"      
+      - think: 5  
+
+  - name: "Search Cookies API"
+    flow:
+      - get:
+          url: "/#/Cookies"     
+      - think: 5  
+
+  - name: "Search Images API"
+    flow:
+      - get:
+          url: "/#/Images"     
+      - think: 5  
+
+  - name: "Search Redirects API"
+    flow:
+      - get:
+          url: "/#/Redirects"    
+      - think: 5  
+     
+
+
