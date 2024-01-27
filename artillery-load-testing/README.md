@@ -1,5 +1,9 @@
 ## Artillery Load Testing Note:
 
+## To install artillery
+
+Run > npm install -g artillery@latest
+
 ## To run this artillery test and output JSON report:
 
 Run > artillery run -o Test_report test.yml
