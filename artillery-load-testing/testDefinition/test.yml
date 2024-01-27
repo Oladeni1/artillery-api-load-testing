@@ -3,14 +3,15 @@ config:
   phases:
     - duration: 60
       arrivalRate: 1
-      name: Warm up
+      rampTo: 10
+      name: Warm up the API
     - duration: 120
       arrivalRate: 1
-      rampTo: 2
-      name: Ramp up load
+      rampTo: 20
+      name: Ramp up to the peak load
     - duration: 240
       arrivalRate: 4
-      name: Sustained load
+      name: Sustained the peak load
   plugins:
     fuzzer: {}
     metrics-by-endpoint: {useOnlyRequestNames: true}  
