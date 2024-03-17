@@ -1,3 +1,23 @@
+name: Artillery Load Test
+ 
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  artillery:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+ 
+      - name: Execute load tests
+        uses: artilleryio/action-cli@v1
+        with:
+          command: artillery run test.yml
+
 config:
   target: "https://httpbin.org"
   phases:
@@ -12,9 +32,25 @@ config:
     - duration: 240
       arrivalRate: 4
       name: Sustained the peak load
+
   plugins:
     fuzzer: {}
-    metrics-by-endpoint: {useOnlyRequestNames: true}  
+    metrics-by-endpoint: {useOnlyRequestNames: true}
+    apdex: {} 
+    threshold: 200
+
+  ensure:
+    thresholds:
+    # p99 of response time must be <250:
+      - "http.response_time.p99": 250
+      # p95 of response time must be <100:
+      - "http.response_time.p95": 100
+      - "metric.name.one": value1
+      - "metric.name.two": value2
+    conditions:
+      - expression: "metric.name.one <= value1 and metric.name.two > value2"
+        strict: true|false # defaults to true
+
 scenarios:
   - name: "Search Method API"
     flow:
