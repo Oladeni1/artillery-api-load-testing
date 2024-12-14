@@ -1,0 +1,51 @@
+
+artillery video resource: 
+https://www.youtube.com/watch?v=ME5JzpJ1suQ&list=PLJ9A48W0kpRJh1_uW2mVNhSIVCMYmNlm7
+
+artillery github repo:
+https//github.com/artilleryio/artillery
+
+artillery cli
+artillery pro
+
+installation:
+sudo npm install -g artillery@latest
+
+
+video 3 - duration (sec)/arrivalrate
+do nothing
+constant arrival rate
+ramp up rate
+fixed rate
+
+video 5 correllation:
+regex 101 tool for regular expression conversion
+
+video 7 Expectations (Assertions via plugins) in artillery
+Install:
+npm install artillery-plugin-expert
+Run:
+DEBUG=plugin:expect artillery run test.yaml
+
+
+video 8 environment/Reporting (JSON/HTML) reports
+
+To generate json report > artillery run --output loadtest-result.json test.yaml
+
+To convert json to html > artillery report loadtest-result.json
+
+To open html report > xdg-open test.json.html
+
+
+video 9 Run artillery with docker:
+
+docker run -it -v ${PWD}:/scripts artilleryio/artillery:latest run /scripts/test.yml --output /scripts/load-run.json
+
+
+video 10 artillery probe:
+
+artillery probe --help
+
+artillery probe https://google.com
+
+
