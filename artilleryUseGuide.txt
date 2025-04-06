@@ -23,7 +23,7 @@ regex 101 tool for regular expression conversion
 
 video 7 Expectations (Assertions via plugins) in artillery
 Install:
-npm install artillery-plugin-expert
+npm install artillery-plugin-expect
 Run:
 DEBUG=plugin:expect artillery run test.yaml
 
