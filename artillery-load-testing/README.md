@@ -12,6 +12,10 @@ Run > artillery run -o Test_report test.yml
 
 Run > artillery report Test_report
 
+## To run this artillery test and output HTML report:
+
+Run > artillery run test2.yml --output report.json && artillery report report.json
+
 ## To run this artillery test in quite mode without writing output in console but output JSON report:
 
 Run > artillery run --quiet -o Test_report test.yml
